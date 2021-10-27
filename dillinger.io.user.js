@@ -30,9 +30,17 @@
         const importText = `Raw`;
         const localStorageFilesKey = `files`;
         const localStorageCurrentDocumentKey = `currentDocument`;
-        const jsonFileName = `dilinger_raw.json`;
+        const jsonFileName = `dilinger_raw`;
         const confirmMessageByOverwrite = `Keep in mind that the script does not check the syntax of the imported data and assumes that the imported file was previously exported. After applying the settings, the page will reload and all saved documents will be overwritten. Continue?`;
         const confirmMessageByExport = `Delete saved documents after exporting and then reloading the page?`;
+        const inp = document.createElement('input');
+
+        const getDateTime = function() {
+            return new Date().toISOString()
+                .slice(0, -5)
+                .replace('T', '_')
+                .split(':').join('-');
+        };
 
         const saveJSON = function (data, filename) {
 
@@ -40,15 +48,19 @@
                 data = JSON.stringify(data, undefined, 4);
             }
 
-            var blob = new Blob([data], {type: 'text/json'}),
-                e = document.createEvent('MouseEvents'),
-                a = document.createElement('a');
+            const blob = new Blob([data], {type: 'text/json'}),
+                  a = document.createElement('a'),
+                  evt = new MouseEvent("click", {
+                      bubbles: true,
+                      cancelable: true,
+                      view: window
+                  });
 
-            a.download = filename;
+            a.download = filename + '_' + getDateTime() + '.json';
             a.href = window.URL.createObjectURL(blob);
             a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
-            e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            a.dispatchEvent(e);
+            a.dispatchEvent(evt);
+            a.remove();
         };
 
         const readJSON = function (files) {
@@ -61,17 +73,18 @@
                         localStorage.setItem(localStorageCurrentDocumentKey, JSON.stringify(json[0]));
                         localStorage.setItem(localStorageFilesKey, e.target.result);
                         window.location.reload();
+                    } else {
+                        inp.value = null;
                     }
                 };
             }
         };
 
-        if(exportMenu.length > 0) {
-
+        const addExportRaw = function() {
             let a = document.createElement('a');
                 a.innerText = exportText;
                 a.addEventListener('click', function(e) {
-                    const deleteSavedDocs = confirm(confirmMessageByExport);
+                    let deleteSavedDocs = confirm(confirmMessageByExport);
                     saveJSON(localStorage.getItem(localStorageFilesKey), jsonFileName);
                     if(deleteSavedDocs){
                         localStorage.removeItem(localStorageFilesKey);
@@ -85,20 +98,14 @@
                 li.appendChild(a);
 
             exportMenu[0].appendChild(li);
+        };
 
-        } else {
-            console.error("Export menu not found by selector: %s", exportMenuSelector);
-        }
-
-        if(importMenu.length > 0) {
-
-            let inp = document.createElement('input');
-                inp.id = 'fileElem';
+        const addImportRaw = function() {
                 inp.type = 'file';
                 inp.multiple = false;
                 inp.accept = 'application/json';
                 inp.style.display = 'none';
-                inp.onchange = function(){
+                inp.onchange = function() {
                     readJSON(this.files);
                 };
 
@@ -116,7 +123,16 @@
                 li.appendChild(a);
                 li.appendChild(inp);
                 importMenu[0].appendChild(li);
+        };
 
+        if(exportMenu.length > 0) {
+            addExportRaw();
+        } else {
+            console.error("Export menu not found by selector: %s", exportMenuSelector);
+        }
+
+        if(importMenu.length > 0) {
+            addImportRaw();
         } else {
             console.error("Import menu not found by selector: %s", importMenuSelector);
         }
