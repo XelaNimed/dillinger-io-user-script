@@ -10,3 +10,6 @@ To export all the documents present in the local storage, click on the `Export a
 To import previously saved documents, select the `Raw` item in the `Import from` menu and select the previously exported file in the dialog box that appears.
 
 > Note: keep in mind that the script doesn't check the data for correctness and assumes that the imported files were previously exported by the script.
+
+
+![How to use](https://github.com/XelaNimed/dillinger-io-user-script/blob/master/images/usage.gif)
