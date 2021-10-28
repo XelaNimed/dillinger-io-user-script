@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Dillinger.io
 // @namespace   https://github.com/XelaNimed
-// @version     0.1
+// @version     0.1.1
 // @description Adds the ability to export and import documents from local storage in raw format (see "Export as" and "Import from" menus). When exporting documents, you can select the option to automatically delete documents after exporting.
 // @author      XelaNimed
 // @copyright   2021, XelaNimed (https://github.com/XelaNimed)
@@ -22,17 +22,17 @@
 
     $(document).ready(function() {
 
-        const exportMenuSelector = `.menu.menu-utilities>li:nth-child(2)>ul`;
-        const importMenuSelector = `.menu.menu-utilities>li:nth-child(4)>ul`;
+        const exportMenuSelector = '.menu.menu-utilities>li:nth-child(2)>ul';
+        const importMenuSelector = '.menu.menu-utilities>li:nth-child(4)>ul';
         const exportMenu = $(exportMenuSelector);
         const importMenu = $(importMenuSelector);
-        const exportText = `Raw`;
-        const importText = `Raw`;
-        const localStorageFilesKey = `files`;
-        const localStorageCurrentDocumentKey = `currentDocument`;
-        const jsonFileName = `dilinger_raw`;
-        const confirmMessageByOverwrite = `Keep in mind that the script does not check the syntax of the imported data and assumes that the imported file was previously exported. After applying the settings, the page will reload and all saved documents will be overwritten. Continue?`;
-        const confirmMessageByExport = `Delete saved documents after exporting and then reloading the page?`;
+        const exportText = 'Raw';
+        const importText = 'Raw';
+        const localStorageFilesKey = 'files';
+        const localStorageCurrentDocumentKey = 'currentDocument';
+        const jsonFileName = 'dilinger_raw';
+        const confirmMessageByOverwrite = 'Keep in mind that the script does not check the syntax of the imported data and assumes that the imported file was previously exported. After applying the settings, the page will reload and all saved documents will be overwritten. Continue?';
+        const confirmMessageByExport = 'Delete saved documents after exporting and then reloading the page?';
         const inp = document.createElement('input');
 
         const getDateTime = function() {
