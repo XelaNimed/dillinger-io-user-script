@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name        Dillinger.io
 // @namespace   https://github.com/XelaNimed
-// @version     0.1.1
+// @version     0.1.2
 // @description Adds the ability to export and import documents from local storage in raw format (see "Export as" and "Import from" menus). When exporting documents, you can select the option to automatically delete documents after exporting.
 // @author      XelaNimed
 // @copyright   2021, XelaNimed (https://github.com/XelaNimed)
 // @updateURL   https://raw.githubusercontent.com/XelaNimed/dillinger-io-user-script/master/stackoverflow.user.js
 // @downloadURL https://raw.githubusercontent.com/XelaNimed/dillinger-io-user-script/master/stackoverflow.user.js
-// @homepageURL https://raw.githubusercontent.com/XelaNimed/dillinger-io-user-script
 // @supportURL  https://github.com/XelaNimed/dillinger-io-user-script/issues
+// @homepageURL https://github.com/XelaNimed/dillinger-io-user-script
 // @license     MIT
 // @match       https://dillinger.io/
 // @icon        https://www.google.com/s2/favicons?domain=dillinger.io&sz=32
