@@ -1,3 +1,6 @@
+[![OpenUserJS_badge](https://img.shields.io/badge/dynamic/json?style=flat-square&suffix=%20installs&color=%232C3E50&label=OpenUserJS&query=%24.OpenUserJS.installs%5B0%5D.value&url=https%3A%2F%2Fopenuserjs.org%2Fmeta%2FXelaNimed%2FDillinger.io.meta.json)](https://openuserjs.org/scripts/XelaNimed/Dillinger.io)
+[![GreasyFork badge](https://img.shields.io/badge/dynamic/json?style=flat-square&color=%232C3E50&label=GreasyFork&query=total_installs&suffix=%20installs&url=https%3A%2F%2Fgreasyfork.org%2Fscripts%2F434565.json)](https://greasyfork.org/ru/scripts/434565-dillinger-io)
+
 # User Script for Dillinger.io
 
 Adds the ability to export and import documents from local storage in raw format (see `Export as` and `Import from` menus).  
