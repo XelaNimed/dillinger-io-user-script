@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Dillinger.io
 // @namespace   https://github.com/XelaNimed
-// @version     0.1.4
+// @version     0.1.5
 // @description Adds the ability to export and import documents from local storage in raw format (see "Export as" and "Import from" menus). When exporting documents, you can select the option to automatically delete documents after exporting.
 // @author      XelaNimed
 // @copyright   2021, XelaNimed (https://github.com/XelaNimed)
@@ -15,7 +15,7 @@
 // @require     https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js#sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=
 // @grant       none
 // ==/UserScript==
-
+/* global Swal, jQuery */
 (function($) {
 
     'use strict';
